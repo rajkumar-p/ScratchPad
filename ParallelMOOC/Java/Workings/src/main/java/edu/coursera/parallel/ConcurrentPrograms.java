@@ -5,6 +5,36 @@ import java.util.List;
 import java.util.concurrent.*;
 
 public class ConcurrentPrograms {
+
+    void runTaskInRunnableClass() {
+        class HelloRunnable implements Runnable {
+
+            @Override
+            public void run() {
+                String threadName = Thread.currentThread().getName();
+                String groupName = Thread.currentThread().getThreadGroup().getName();
+                System.out.println("Hello, " + threadName + ", " + groupName);
+            }
+        }
+
+        HelloRunnable helloRunnable = new HelloRunnable();
+        Thread thread = new Thread(helloRunnable);
+        thread.start();
+    }
+
+    void runTaskInThreadClass() {
+        class HelloThread extends Thread {
+            public void run() {
+                String threadName = Thread.currentThread().getName();
+                String groupName = Thread.currentThread().getThreadGroup().getName();
+                System.out.println("Hello, " + threadName + ", " + groupName);
+            }
+        }
+
+        HelloThread helloThread = new HelloThread();
+        helloThread.start();
+    }
+
     void runTaskInNewThread()
     {
         Runnable task = () -> {
