@@ -6,49 +6,15 @@ import java.util.concurrent.*;
 
 public class ConcurrentPrograms {
 
-    void runTaskInRunnableClass() {
-        class HelloRunnable implements Runnable {
-
-            @Override
-            public void run() {
-                String threadName = Thread.currentThread().getName();
-                String groupName = Thread.currentThread().getThreadGroup().getName();
-                System.out.println("Hello, " + threadName + ", " + groupName);
-            }
-        }
-
-        HelloRunnable helloRunnable = new HelloRunnable();
-        Thread thread = new Thread(helloRunnable);
-        thread.start();
-    }
-
-    void runTaskInThreadClass() {
-        class HelloThread extends Thread {
-            public void run() {
-                String threadName = Thread.currentThread().getName();
-                String groupName = Thread.currentThread().getThreadGroup().getName();
-                System.out.println("Hello, " + threadName + ", " + groupName);
-            }
-        }
-
-        HelloThread helloThread = new HelloThread();
-        helloThread.start();
-    }
-
-    void runTaskInNewThread()
-    {
+    void runTaskInNewThread() {
         Runnable task = () -> {
             String threadName = Thread.currentThread().getName();
             String groupName = Thread.currentThread().getThreadGroup().getName();
-            System.out.println("Hello, " + threadName + ", from " + groupName);
+            System.out.println(String.format("Thread Name : %s, Group Name : %s", threadName, groupName));
         };
-
-        task.run();
 
         Thread newTask = new Thread(task);
         newTask.start();
-
-        System.out.println("done.");
     }
 
     void runTaskInExecutorService()
@@ -57,10 +23,15 @@ public class ConcurrentPrograms {
         executorService.submit(() -> {
             String threadName = Thread.currentThread().getName();
             String groupName = Thread.currentThread().getThreadGroup().getName();
-            System.out.println("Hello, " + threadName + ", from " + groupName);
+            System.out.println(String.format("Thread Name : %s, Group Name : %s", threadName, groupName));
         });
 
-        System.out.println("done.");
+        executorService.submit(() -> {
+            String threadName = Thread.currentThread().getName();
+            String groupName = Thread.currentThread().getThreadGroup().getName();
+            System.out.println(String.format("Thread Name : %s, Group Name : %s", threadName, groupName));
+        });
+
         executorService.shutdown();
     }
 
@@ -70,17 +41,13 @@ public class ConcurrentPrograms {
         Future<Integer> int_value = executorService.submit(() -> {
             String threadName = Thread.currentThread().getName();
             String groupName = Thread.currentThread().getThreadGroup().getName();
-            System.out.println("Hello, " + threadName + ", from " + groupName);
+            System.out.println(String.format("Thread Name : %s, Group Name : %s", threadName, groupName));
 
             return 123;
         });
 
         System.out.println("Future done? - " + int_value.isDone());
         try {
-            String threadName = Thread.currentThread().getName();
-            String groupName = Thread.currentThread().getThreadGroup().getName();
-            System.out.println("Hello, " + threadName + ", from " + groupName);
-
             System.out.println("Getting future value - " + int_value.get());
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -88,7 +55,6 @@ public class ConcurrentPrograms {
             e.printStackTrace();
         }
 
-        System.out.println("done.");
         executorService.shutdown();
     }
 
