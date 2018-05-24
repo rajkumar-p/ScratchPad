@@ -11,8 +11,7 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class App 
 {
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) throws InterruptedException {
         HelloRunnable helloRunnable = new HelloRunnable();
 
         Thread newThread = new Thread(helloRunnable);
@@ -27,6 +26,7 @@ public class App
         concurrentPrograms.runTaskInExecutorService();
         concurrentPrograms.runTaskInExecutorServiceAndPrintReturnedValue();
         concurrentPrograms.runMultipleTaskInExecutorServiceAndPrintReturnedValue();
+        concurrentPrograms.printAndSleepAndRepeat();
 
         int nElements = 500000;
         long[] array = new long[nElements];

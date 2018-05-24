@@ -93,4 +93,12 @@ public class ConcurrentPrograms {
             System.out.println("Scheduling : " + System.nanoTime());
         }, initialDelay, period, TimeUnit.SECONDS);
     }
+
+    void printAndSleepAndRepeat() throws InterruptedException {
+        String[] importantInfo = {"Humpty", "Mary", "Little Lamb", "Jack", "Jill"};
+        for (String i : importantInfo) {
+            System.out.println(i);
+            Thread.sleep(3000);
+        }
+    }
 }
