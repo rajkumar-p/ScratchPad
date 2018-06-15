@@ -12,6 +12,13 @@ import java.util.concurrent.ThreadLocalRandom;
 public class App 
 {
     public static void main(String[] args) throws InterruptedException {
+        App app = new App();
+
+        // app.runParallelPrograms();
+        app.runStreamTest();
+    }
+
+    void runParallelPrograms() throws InterruptedException {
         HelloRunnable helloRunnable = new HelloRunnable();
 
         Thread newThread = new Thread(helloRunnable);
@@ -47,5 +54,10 @@ public class App
         Long maxValue = ForkJoinPool.commonPool().invoke(recMaxTask);
 
         System.out.println(String.format("Max value : %s", maxValue));
+    }
+
+    void runStreamTest() {
+        StreamTest streamTest = new StreamTest();
+        streamTest.runSquareTest();
     }
 }
