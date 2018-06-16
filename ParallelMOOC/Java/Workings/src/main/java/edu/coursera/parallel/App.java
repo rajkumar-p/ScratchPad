@@ -58,6 +58,7 @@ public class App
 
     void runStreamTest() {
         StreamTest streamTest = new StreamTest();
-        streamTest.runSquareTest();
+//        streamTest.runSquareTest();
+        streamTest.someStuff();
     }
 }

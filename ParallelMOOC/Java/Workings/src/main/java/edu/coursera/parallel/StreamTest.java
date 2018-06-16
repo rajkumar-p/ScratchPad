@@ -4,8 +4,10 @@ package edu.coursera.parallel;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class StreamTest {
     public void runSquareTest() {
@@ -52,5 +54,14 @@ public class StreamTest {
         final long endTime = System.currentTimeMillis();
 
         return endTime - startTime;
+    }
+
+    public void someStuff() {
+        Function<Integer, Stream<Integer>> f = x -> Stream.iterate(1, y -> y + 2).limit(5);
+
+        Integer[] nums = {1, 2, 3, 4, 5};
+        Arrays.stream(nums)
+                .flatMap(f)
+                .forEach(System.out::println);
     }
 }
