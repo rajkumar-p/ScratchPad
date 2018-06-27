@@ -1,0 +1,10 @@
+# Idea
+.idea/
+*.iml
+*.iws
+ 
+# OS
+.DS_Store
+ 
+# VM files
+*.beam
