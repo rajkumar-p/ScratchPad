@@ -6,21 +6,19 @@ import org.apache.pdfbox.text.PDFTextStripper;
 import java.io.File;
 import java.io.IOException;
 
-public class PDFDetailsExtractor {
-    private String pdfText = "";
-
-    PDFDetailsExtractor() {
+public class PDFTextExtractor {
+    public static String getPDFTextFrom(String pdfFile) {
+        PDDocument document = null;
+        String pdfText = null;
         try {
-            PDDocument document = PDDocument.load(new File("/Users/rajkumar.p/Projects/ScratchPad/OlaBillParse/res/CRN1777598014.pdf"));
+            document = PDDocument.load(new File(pdfFile));
             pdfText = new PDFTextStripper().getText(document);
 
             document.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
 
-    public String getPdfText() {
         return pdfText;
     }
 }
