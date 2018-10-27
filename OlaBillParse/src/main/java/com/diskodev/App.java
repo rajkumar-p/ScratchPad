@@ -12,7 +12,7 @@ public class App
 {
     public static void main(String[] args)
     {
-        String invoicesDirectory = "/Users/rajkumar.p/Documents/Bills/Ola/August2018";
+        String invoicesDirectory = "/Users/rajkumar.p/Documents/Bills/Ola/September2018";
         Path inputDirectory = Paths.get(invoicesDirectory);
 
         List<OlaInvoice> olaInvoices = new ArrayList<>();
@@ -46,7 +46,7 @@ public class App
         System.out.println("Total Sum : " + sum);
 
         String excelTemplateFileName = "/Users/rajkumar.p/Documents/Bills/Ola/Sheets/OlaBillsTemplate.xlsx";
-        String invoiceMonth = "August 2018";
+        String invoiceMonth = "September 2018";
         ExcelInvoiceCreator.createExcelWithInvoiceDetails(invoicesDirectory,
                                                             excelTemplateFileName,
                                                             invoiceMonth,
