@@ -6,11 +6,14 @@ public class OlaInvoice {
     private double invoiceAmount;
     private String invoiceID;
     private LocalDateTime invoiceDateTime;
+    private String invoiceFileName;
 
-    public OlaInvoice(double invoiceAmount, String invoiceID, LocalDateTime invoiceDateTime) {
+    public OlaInvoice(double invoiceAmount, String invoiceID,
+                      LocalDateTime invoiceDateTime, String invoiceFileName) {
         this.invoiceAmount = invoiceAmount;
         this.invoiceID = invoiceID;
         this.invoiceDateTime = invoiceDateTime;
+        this.invoiceFileName = invoiceFileName;
     }
 
     public double getInvoiceAmount() {
@@ -38,6 +41,16 @@ public class OlaInvoice {
     }
 
     public String toString() {
-        return String.format("<%s, %s, %s>", this.getInvoiceDateTime(), this.getInvoiceID(), this.getInvoiceAmount());
+        return String.format("<%s, %s, %s, %s>",
+                this.getInvoiceDateTime(), this.getInvoiceID(),
+                this.getInvoiceAmount(), this.getInvoiceFileName());
+    }
+
+    public String getInvoiceFileName() {
+        return invoiceFileName;
+    }
+
+    public void setInvoiceFileName(String invoiceFileName) {
+        this.invoiceFileName = invoiceFileName;
     }
 }

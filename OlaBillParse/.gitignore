@@ -5,6 +5,9 @@
 log/
 target/
 
+# Scripts
+set_env.sh
+
 # Idea
 .idea/
 *.iml
