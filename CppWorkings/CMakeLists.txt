@@ -19,7 +19,8 @@ set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Wall -Wextra")
 # Setup include directories
 include_directories(include)
 
-add_executable(workings src/main.cpp include/utils.hpp src/utils.cpp include/rand_int_dist.hpp src/rand_int_dist.cpp)
+add_executable(workings src/main.cpp include/utils.hpp src/utils.cpp include/rand_int_dist.hpp
+                src/rand_int_dist.cpp include/CharChain.hpp src/CharChain.cpp)
 
 # Package executables to specific directory
 set_target_properties(workings PROPERTIES RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_SOURCE_DIR}/bin/debug)
